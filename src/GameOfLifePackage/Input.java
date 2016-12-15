@@ -2,7 +2,7 @@ package GameOfLifePackage;
 
 class Input implements GameInput {
 
-    private final int size = 15;
+    private final int size = 10;
 
     @Override
     public boolean[][] getInitialState() {
