@@ -3,9 +3,11 @@ package GameOfLifePackage;
 class GameRunner {
 
     private final GameInput input;
+    private final GameOutput output;
 
-    protected GameRunner(final GameInput input, Out out) {
+    protected GameRunner(final GameInput input, Out output) {
         this.input = input;
+        this.output = output;
     }
 
 
@@ -14,11 +16,8 @@ class GameRunner {
         Field field = new Field(input.getInitialState());
 
         for (int n = 0; n < 100; n++) {
-            Out out = new Out();
-            out.render(field);
+            output.render(field);
             field.nextState();
         }
     }
-
-
 }

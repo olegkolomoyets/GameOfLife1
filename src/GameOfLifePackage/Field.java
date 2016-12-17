@@ -2,7 +2,7 @@ package GameOfLifePackage;
 
 class Field {
 
-    int size;
+    private int size;
 
     public Field(boolean[][] initialState) {
         this.field = initialState;
