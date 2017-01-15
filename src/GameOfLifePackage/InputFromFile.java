@@ -14,8 +14,8 @@ class InputFromFile implements GameInput {
         final boolean[][] booleanField = new boolean[size][size];
         final Scanner sc = new Scanner(new File("E:/InitialState.txt"));
         while (sc.hasNext()) {
-            for (int i = 0; i < 10; i++) {
-                for (int j = 0; j < 10; j++) {
+            for (int i = 0; i < size; i++) {
+                for (int j = 0; j < size; j++) {
                     String a = sc.next();
                     if (a.equals(".")) booleanField[i][j] = false;
                     if (a.equals("X")) booleanField[i][j] = true;

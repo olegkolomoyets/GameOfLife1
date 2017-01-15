@@ -17,7 +17,7 @@ class GameRunner {
 
         Field field = new Field(input.getInitialState());
 
-        for (int n = 0; n < 100; n++) {
+        for (int n = 0; n < 10; n++) {
             output.render(field);
             field.nextState();
         }
