@@ -1,4 +1,4 @@
-package GameOfLifePackage;
+package GameOfLifePackage.Input;
 
 class StandardInput implements GameInput {
 

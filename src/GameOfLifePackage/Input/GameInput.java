@@ -1,4 +1,4 @@
-package GameOfLifePackage;
+package GameOfLifePackage.Input;
 
 import java.io.IOException;
 

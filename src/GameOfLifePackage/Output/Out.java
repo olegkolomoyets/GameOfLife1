@@ -1,4 +1,6 @@
-package GameOfLifePackage;
+package GameOfLifePackage.Output;
+
+import GameOfLifePackage.General.Field;
 
 class Out implements GameOutput {
 

@@ -1,6 +1,6 @@
-package GameOfLifePackage;
+package GameOfLifePackage.General;
 
-class Field {
+public class Field {
 
     private int size;
 
@@ -9,15 +9,17 @@ class Field {
         this.size = initialState.length;
         this.indexes = new int[size][size];
     }
+
     public int getSize() {
         return size;
     }
+
     // создание поля
     private boolean[][] field = new boolean[size][size];
     private int[][] indexes = new int[size][size];
 
     // Перерождение клеточек
-    protected void nextState() {
+    public void nextState() {
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
 
@@ -59,10 +61,8 @@ class Field {
         }
 
     }
-    protected boolean getState(int i, int j) {
+
+    public boolean getState(int i, int j) {
         return field[i][j];
     }
-
-
-
 }

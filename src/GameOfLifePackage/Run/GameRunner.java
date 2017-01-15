@@ -1,19 +1,23 @@
-package GameOfLifePackage;
+package GameOfLifePackage.Run;
+
+import GameOfLifePackage.General.Field;
+import GameOfLifePackage.Input.GameInput;
+import GameOfLifePackage.Output.GameOutput;
 
 import java.io.IOException;
 
-class GameRunner {
+public class GameRunner {
 
     private final GameInput input;
     private final GameOutput output;
 
-    protected GameRunner(final GameInput input, GameOutput output) {
+    public GameRunner(final GameInput input, GameOutput output) {
         this.input = input;
         this.output = output;
     }
 
 
-    protected void run() throws IOException {
+    public void run() throws IOException {
 
         Field field = new Field(input.getInitialState());
 

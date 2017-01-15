@@ -1,10 +1,10 @@
-package GameOfLifePackage;
+package GameOfLifePackage.Input;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.Scanner;
 
-class InputFromFile implements GameInput {
+public class InputFromFile implements GameInput {
 
     private final int size = 10;
 
