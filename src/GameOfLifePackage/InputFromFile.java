@@ -4,7 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Scanner;
 
-class Input implements GameInput {
+class InputFromFile implements GameInput {
 
     private final int size = 10;
 
