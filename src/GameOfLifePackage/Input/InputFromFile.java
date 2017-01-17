@@ -17,11 +17,11 @@ public class InputFromFile implements GameInput {
             for (int i = 0; i < size; i++) {
                 for (int j = 0; j < size; j++) {
                     String a = sc.next();
-                    if (a.equals(".")) booleanField[i][j] = false;
-                    if (a.equals("X")) booleanField[i][j] = true;
+                    booleanField[i][j] = a.equals("X");
                 }
             }
         }
+        sc.close();
         return booleanField;
     }
 }

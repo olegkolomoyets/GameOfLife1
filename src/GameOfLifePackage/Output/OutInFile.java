@@ -17,8 +17,7 @@ public class OutInFile implements GameOutput {
             int size = field.getSize();
             for (int i = 0; i < size; i++) {
                 for (int j = 0; j < size; j++) {
-                    if (!field.getState(i, j)) writer.write(". ");
-                    if (field.getState(i,j)) writer.write("X ");
+                    writer.write(field.getState(i, j) ? "X " : ". ");
                 }
                 writer.write('\n');
             }
