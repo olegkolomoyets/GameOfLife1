@@ -6,23 +6,39 @@ import java.util.Scanner;
 
 public class InputFromFile implements GameInput {
 
-    private final int size = 10;
-
     @Override
     public boolean[][] getInitialState() throws IOException {
-        // Заполнение живых клеточек
-        final boolean[][] booleanField = new boolean[size][size];
-        final Scanner sc = new Scanner(new File("E:/InitialState.txt"));
-        while (sc.hasNext()) {
+        File file = new File("E:/InitialStateBad.txt");
+
+        //валидация формата файла
+        final Scanner scForValidating = new Scanner(file);
+        String firstSign = scForValidating.next();
+        scForValidating.close();
+        if (!firstSign.equals(".") || !firstSign.equals("X")) {
+            System.out.println("Incorrect file format!");
+            System.exit(0);
+            return null;
+        }
+        else {
+
+            //определение размера поля (учитывая, что оно квадратное)
+            final Scanner scForLength = new Scanner(file);
+            int lineLength = scForLength.nextLine().length();
+            int size = (lineLength / 2) + 1;
+            scForLength.close();
+
+            //обработка поля
+            final boolean[][] booleanField = new boolean[size][size];
+            final Scanner scForReading = new Scanner(file);
             for (int i = 0; i < size; i++) {
                 for (int j = 0; j < size; j++) {
-                    String a = sc.next();
+                    String a = scForReading.next();
                     booleanField[i][j] = a.equals("X");
                 }
             }
+            scForReading.close();
+            return booleanField;
         }
-        sc.close();
-        return booleanField;
     }
 }
 
