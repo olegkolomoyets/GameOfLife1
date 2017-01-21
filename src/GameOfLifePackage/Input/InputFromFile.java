@@ -14,10 +14,8 @@ public class InputFromFile implements GameInput {
         final Scanner scForValidating = new Scanner(file);
         String firstSign = scForValidating.next();
         scForValidating.close();
-        if (!firstSign.equals(".") || !firstSign.equals("X")) {
-            System.out.println("Incorrect file format!");
-            System.exit(0);
-            return null;
+        if (!firstSign.equals(".") & !firstSign.equals("X")) {
+            throw new IOException("Incorrect text format!");
         }
         else {
 

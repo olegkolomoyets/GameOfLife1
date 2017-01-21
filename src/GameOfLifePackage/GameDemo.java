@@ -1,5 +1,6 @@
 package GameOfLifePackage;
 
+
 import GameOfLifePackage.Input.InputFromFile;
 import GameOfLifePackage.Output.OutInFile;
 import GameOfLifePackage.Run.GameRunner;
