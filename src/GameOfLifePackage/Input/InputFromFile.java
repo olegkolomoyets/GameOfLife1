@@ -1,8 +1,5 @@
 package GameOfLifePackage.Input;
 
-import GameOfLifePackage.Input.Validation.SimpleValidator;
-import GameOfLifePackage.Input.Validation.ValidRunner;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.Scanner;
@@ -13,21 +10,58 @@ public class InputFromFile implements GameInput {
     public boolean[][] getInitialState() throws IOException {
 
         File file = new File("E:/InitialState10.txt");
-        new ValidRunner(new SimpleValidator()).run(file);
+        final Scanner scForFile = new Scanner(file);
+        String line = scForFile.nextLine();
+        int firstLineLength = line.length();
+        int counter = 1;
 
-        //определение размера поля (учитывая, что оно квадратное)
-        final int size = SizeDetermination.SizeDetermine(file);
+        //определение размера поля
+        int size = (firstLineLength / 2) + 1;
 
-        //обработка поля
+        //создание массива
         final boolean[][] booleanField = new boolean[size][size];
-        final Scanner scForReading = new Scanner(file);
-        for (int i = 0; i < size; i++) {
-            for (int j = 0; j < size; j++) {
-                String a = scForReading.next();
-                booleanField[i][j] = a.equals("X");
+        int i = 0;
+        int j = 0;
+        Scanner scForLine = new Scanner(line);
+        while (scForLine.hasNext()) {
+            String sign = scForLine.next();
+            if (!sign.equals(".") & !sign.equals("X")) {
+                throw new IOException("Incorrect text format!");
+            }
+            booleanField[i][j] = sign.equals("X");
+            j++;
+        }
+
+        while (scForFile.hasNext()) {
+
+            line = scForFile.nextLine();
+            int otherLineLength = line.length();
+            if (otherLineLength != firstLineLength) {
+                throw new IOException("Incorrect text format!");
+            }
+            counter++;
+            if (counter > ((firstLineLength / 2) + 1)) {
+                throw new IOException("Incorrect text format!");
+            }
+            i++;
+            j = 0;
+            scForLine = new Scanner(line);
+            while (scForLine.hasNext()) {
+                String sign = scForLine.next();
+                if (!sign.equals(".") & !sign.equals("X")) {
+                    throw new IOException("Incorrect text format!");
+                }
+                booleanField[i][j] = sign.equals("X");
+                j++;
             }
         }
-        scForReading.close();
+        scForFile.close();
+        scForLine.close();
+
+        // проверка по высоте
+        if (counter != ((firstLineLength / 2) + 1)) {
+            throw new IOException("Incorrect text format!");
+        }
         return booleanField;
     }
 }
