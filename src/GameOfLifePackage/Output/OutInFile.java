@@ -10,7 +10,7 @@ import java.io.Writer;
 public class OutInFile implements GameOutput {
 
     @Override
-    public void render(Field field) {
+    public void render(Field field) throws IOException {
 
         final File newFile = new File("E:/Out.txt");
         try (final Writer writer = new FileWriter(newFile, true)) {
@@ -23,7 +23,7 @@ public class OutInFile implements GameOutput {
             }
             writer.write('\n');
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new IOException("Something wrong with file!");
         }
     }
 }

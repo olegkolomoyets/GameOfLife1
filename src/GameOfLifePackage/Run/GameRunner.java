@@ -18,12 +18,15 @@ public class GameRunner {
 
 
     public void run() throws IOException {
+        try {
+            Field field = new Field(input.getInitialState());
 
-        Field field = new Field(input.getInitialState());
-
-        for (int n = 0; n < 10; n++) {
-            output.render(field);
-            field.nextState();
+            for (int n = 0; n < 10; n++) {
+                output.render(field);
+                field.nextState();
+            }
+        } catch (IOException e) {
+            System.out.println("Something gone wrong!");
         }
     }
 }
